@@ -5,7 +5,7 @@ $users = [
     'user2' => password_hash('my5678', PASSWORD_DEFAULT),
     'admin' => password_hash('adminpass', PASSWORD_DEFAULT),
 ];
-print_r($users);
+//print_r($users);
 
 $usuario = $_POST['username'];
 $contraseña = $_POST['password'];
