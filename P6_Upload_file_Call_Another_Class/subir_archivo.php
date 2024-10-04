@@ -1,4 +1,5 @@
 <?php
+    include 'analizador_discurso.php';
     $destino_ruta = "./discurso/";
     $destino_archivo = $destino_ruta . basename($_FILES["archivo"]["name"]);
     $archivo_tipo_archivo = strtolower(pathinfo($destino_archivo, PATHINFO_EXTENSION));
