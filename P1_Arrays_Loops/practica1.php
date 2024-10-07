@@ -31,6 +31,7 @@ function calcular_rango($horas){
 echo "
 ";
 echo "El rango de horas de estudio es de: ".calcular_rango($horas);
+echo "prueba";
 
 function desviacion_estandar($horas){
 $n_elementos = count($horas);
