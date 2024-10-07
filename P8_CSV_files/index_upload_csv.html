@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir y procesar un archivo CSV</title>
+</head>
+<body>
+    <form action="file_reader.php" method="post"
+    enctype="multipart/form-data">
+    Selecciona ruta archivo CSV a subir:
+    <!--Del atributo "name" vas a tener que usarlo con la variable $_FILES-->
+    <input type="file" name="archivo_subido" id="archivo">
+    <!--Usa siempre la variable archivo_subido-->
+    <input type="submit" value="Subir" name="Subir al servidor">
+</form>
+</body>
+</html>

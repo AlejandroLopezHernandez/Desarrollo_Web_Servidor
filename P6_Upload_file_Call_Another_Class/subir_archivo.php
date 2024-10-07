@@ -1,10 +1,13 @@
 <?php
-    include 'analizador_discurso.php';
+    include 'analizador_discurso(resuelto).php';
     $destino_ruta = "./discurso/";
     $destino_archivo = $destino_ruta . basename($_FILES["archivo"]["name"]);
     $archivo_tipo_archivo = strtolower(pathinfo($destino_archivo, PATHINFO_EXTENSION));
     $subida_correcta = 1;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if($_FILES["archivo"]["error"]!== UPLOAD_ERR_OK){
+            echo "Error al subir el archivo.Código de error: ".$_FILES["archivo"]["error"]."<br>";
+        }
         if (file_exists($destino_archivo)) {
             $subida_correcta = 0;
         }
@@ -21,10 +24,9 @@
             }
         }
     }
-    function __construct(){
+    function __construct(){}
     $analizador = new AnalizadorDeDiscurso();
-}
-    $analizador->agregarDiscurso();
+    $analizador->agregarDiscurso($destino_ruta);
     $analizador->analizar();
 
 ?>
