@@ -20,28 +20,31 @@ class AnalizadorDeDiscurso {
     // Método principal que analiza el texto y devuelve las tres palabras más importantes
     public function analizar() {
         // Convertir el texto a minúsculas
-        $textoLimpio = strtolower($this->texto);
-
-        
+        echo "El texto en minísculas es:
+         ".$textoLimpio = strtolower($this->texto);
 
         // Eliminar los signos de puntuación utilizando str_replace
-        $textoLimpio = str_replace($this->signosDePuntuacion, '', $textoLimpio);
+        echo "El texto sin signos de puntuación es:
+        " .$textoLimpio = str_replace($this->signosDePuntuacion, '', $textoLimpio);
 
         // Separar el texto en palabras
-        $palabras = explode(' ', $textoLimpio);
+        echo "El texto en palabras individuales es: ";
+        print_r($palabras = explode(' ', $textoLimpio));
 
       
     // Eliminar palabras prohibidas 
         $palabrasFiltradas = array_diff($palabras, $this->palabrasProhibidas);
 
         // Contar la frecuencia de cada palabra
-        $frecuencia = array_count_values($palabrasFiltradas);
+        echo "La frecuencia de cada palabras es: ";
+        print_r($frecuencia = array_count_values($palabrasFiltradas));
 
         // Ordenar las palabras por su frecuencia en orden descendente
         arsort($frecuencia);
 
         // Obtener las tres palabras más importantes (más frecuentes)
-        $palabrasMasFrecuentes = array_slice($frecuencia, 0, 3, true);
+        echo "Las palabras más frecuentes son: ";
+        print_r($palabrasMasFrecuentes = array_slice($frecuencia, 0, 3, true));
 
         return $palabrasMasFrecuentes;
     }

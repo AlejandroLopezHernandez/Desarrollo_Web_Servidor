@@ -8,23 +8,26 @@ $archivoTipoArchivo = strtolower(pathinfo($destino_archivo, PATHINFO_EXTENSION))
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //En archivo, hay que poner el mismo nombre que le hayamos puesto en el HTML 
     if (move_uploaded_file($_FILES["archivo_subido"]["tmp_name"], $destino_archivo)) { // Copiar el archivo
-        echo "El archivo ha sido subido con éxito";
+        echo "El archivo ha sido subido con éxito<br>";
     } else {
-        echo "Error al subir el archivo.";
+        echo "Error al subir el archivo.<br>";
     }
 }
+//Comprobamos si el archivo en formato JSON existe
+$json_file='./dataset/books.json';
+if(!file_exists($json_file)){
+    echo "Error, archivo JSON no encontrado<br>";
+}
 //Usamos la función file_get_contents para leer el contenido de un archivo como si fuera una cadena, y lo almacenamos en unaa variable
-$jsonData = file_get_contents('books.json');
+$jsonData = file_get_contents($json_file);
 //json_decode() se usa para convertir una cadena json en un objeto
 $data = json_decode($jsonData,true);
 //Procesamos los datos del archivo JSON con un bucle
 foreach ($data as $libro){
-    //Y ahora procesamos cada libro
-    if(isset($libro['title']) && isset ($libro['author'])){
+        //Y ahora procesamos cada libro
         echo "Title: ".$libro['title'];
         echo "Writer: ".$libro['author']."<br>";
-    } else {
-        echo "Datos incompletos para este libro";
-    }
+        echo "Title: ".$libro->title;
+        echo "Writer: ".$libro->author."<br>";
 }
 ?>
