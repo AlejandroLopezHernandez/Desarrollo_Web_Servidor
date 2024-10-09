@@ -14,9 +14,9 @@ private $vehiculos = []; //implementa un array asociativo
  
     public function mostrarVehiculos() { 
     foreach ($this->vehiculos as $vehiculo) { 
-        echo $vehiculo['id'];
-        echo $vehiculo['coordenadas'];
-        echo $vehiculo['nivelBateria'];
+        echo "ID: ".$vehiculo->id."<br>";
+        echo "Coordenadas: ".implode(",",$vehiculo->getCoordenadas)."<br>";
+        echo "Nivel de batería: ".$vehiculo->getNivelBateria().'<br>';
         } 
     } 
  

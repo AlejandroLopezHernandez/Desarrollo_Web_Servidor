@@ -20,7 +20,7 @@ abstract class VehiculoAutonomo {
         return $this->nivelBateria;
     } 
     public function recargarBateria() { 
-        $nivelBateria ++;
+        $this->nivelBateria ++;
     } 
  
     abstract public function mover($nuevasCoordenadas); 

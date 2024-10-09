@@ -21,13 +21,22 @@ if(!file_exists($json_file)){
 //Usamos la función file_get_contents para leer el contenido de un archivo como si fuera una cadena, y lo almacenamos en unaa variable
 $jsonData = file_get_contents($json_file);
 //json_decode() se usa para convertir una cadena json en un objeto
-$data = json_decode($jsonData,true);
-//Procesamos los datos del archivo JSON con un bucle
-foreach ($data as $libro){
+$data = json_decode($jsonData,false);
+//Metemos los libros dentro de un array para poder procesarlos
+$array_libros = $data->books;
+//Hacemos esto porque en nuestro archivo JSON primeros hay 'books' y después hay cada libro individual
+//Procesamos los datos del archivo JSON con un bucle,usamos el array que hemos creado anteriormente
+foreach ($array_libros as $libro){
         //Y ahora procesamos cada libro
-        echo "Title: ".$libro['title'];
-        echo "Writer: ".$libro['author']."<br>";
-        echo "Title: ".$libro->title;
-        echo "Writer: ".$libro->author."<br>";
+        echo 'Title: '.$libro->title.' || ';
+        echo 'Writer: '.$libro->author.'<br>';
+        /*En caso de que hubiese más de un autor para cada libro, deberíamos crear un array
+         para los autores y luego otro bucle foreach para procesarlo. Este bucle iría dentro del otro.
+
+        $array_autores = $libro->author;
+
+        foreach($array_autores as $autor){
+        echo '<br>'.$autor;
+        }*/
 }
 ?>
