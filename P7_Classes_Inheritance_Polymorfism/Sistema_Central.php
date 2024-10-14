@@ -1,23 +1,26 @@
 <?php
+require_once "VehiculoAutonomo.php";
 class SistemaCentral
 {
     private $vehiculos = []; //implementa un array asociativo  [‘id_vehiculo’=>objetovehiculo];
     private $centralesRecarga = [];
 
-    public function agregarVehiculo(VehiculoAutonomo $vehiculo){
-        $this->vehiculos[$vehiculo->id] = $vehiculo;
+    public function agregarVehiculo(VehiculoAutonomo $vehiculo)
+    {
+
+        $this->vehiculos[$vehiculo->getid()] = $vehiculo;
     }
 
     public function agregarCentralRecarga(CentralRecarga $central)
     {
-        $this->centralesRecarga[$central->id] = $central;
+        $this->centralesRecarga[$central->getid()] = $central;
     }
 
     public function mostrarVehiculos()
     {
         foreach ($this->vehiculos as $vehiculo) {
-            echo "ID: " . $vehiculo->id . "<br>";
-            echo "Coordenadas: " . implode(",", $vehiculo->getCoordenadas) . "<br>";
+            echo "ID: " . $vehiculo->getid() . "<br>";
+            echo "Coordenadas: " . implode(",", $vehiculo->getCoordenadas()) . "<br>";
             echo "Nivel de batería: " . $vehiculo->getNivelBateria() . '<br>';
         }
     }
@@ -28,18 +31,19 @@ class SistemaCentral
         $distanciaMinima = PHP_INT_MAX;
 
         foreach ($this->centralesRecarga as $central) {
-            $distancia = $this->calcularDistancia($coordenadasVehiculo, $central->coordenadasCentral);
+            $distancia = $this->calcularDistancia($coordenadasVehiculo, $central->getCoordenadas());
             if ($distancia < $distanciaMinima) {
                 $distanciaMinima = $distancia;
-                $centralMasCercana = $coordenadasCentral;
+                $centralMasCercana = $central->getCoordenadas();
             }
         }
-
         return $centralMasCercana;
     }
 
     private function calcularDistancia($coordenadasA, $coordenadasB)
     {
+        //sqrt es para hacer la raíz cuadrada
+        //pow se usa para elevar al cuadrado
         return sqrt(pow($coordenadasB[0] - $coordenadasA[0], 2)  + pow($coordenadasB[1] - $coordenadasA[1], 2));
     }
 
@@ -57,6 +61,14 @@ class SistemaCentral
             }
         } else {
             echo "Vehículo no encontrado.\n";
+        }
+    }
+    public function mostrarCentrales()
+    {
+        foreach ($this->centralesRecarga as $central) {
+            echo "ID: " . $central->getid() . "<br>";
+            echo "Coordenadas: " . implode(",", $central->getCoordenadas()) . "<br>";
+            echo "Puesto de recarga libre: " . $central->getpuestoRecargaLibre() . '<br>';
         }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 // Clase base para todos los vehículos autónomos 
-abstract class VehiculoAutonomo{
+abstract class VehiculoAutonomo
+{
     protected $id;
     protected $coordenadas; // [x, y] array 
     protected $nivelBateria;
@@ -24,6 +25,10 @@ abstract class VehiculoAutonomo{
     public function getNivelBateria()
     {
         return $this->nivelBateria;
+    }
+    public function getid()
+    {
+        return $this->id;
     }
     public function recargarBateria()
     {

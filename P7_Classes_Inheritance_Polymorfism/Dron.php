@@ -1,6 +1,7 @@
 <?php
 // Clase para Dron, que extiende VehiculoAutonomo 
-class Dron extends VehiculoAutonomo{
+class Dron extends VehiculoAutonomo
+{
     protected $motores = 4;
     protected $estado;
 
