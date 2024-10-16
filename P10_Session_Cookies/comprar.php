@@ -3,7 +3,7 @@ session_start(); // Iniciar la sesión
 // Verificar si se ha seleccionado un libro 
 if (isset($_GET['libro'])) { 
     //Sanitizar la entrada
-    $libro = filter_input(INPUT_GET,'libro',FILTER_SANITIZE_SPECIAL_CHARS);  
+    $libro = filter_var($_GET['libro'],FILTER_SANITIZE_SPECIAL_CHARS);  
     // Agregar el libro al carrito (array de sesión) 
     if (!isset($_SESSION['carrito'])) {
          $_SESSION['carrito'] = array(); // Inicializar carrito si no existe 

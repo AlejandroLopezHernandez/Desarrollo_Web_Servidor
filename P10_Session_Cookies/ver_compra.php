@@ -14,5 +14,5 @@ if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito']))
      } else {
         // Mensaje si el carrito está vacío 
         echo "<h1>El carrito está vacío</h1>"; 
-        echo '<p><a href="index.html">Volver a la tienda</a></p>'; 
+        echo '<p><a href="index_tienda.html">Volver a la tienda</a></p>'; 
     } ?>
