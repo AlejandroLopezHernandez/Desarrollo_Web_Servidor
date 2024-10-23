@@ -1,4 +1,4 @@
 # Proyectos-PHP
 Este es un repositorio para subir los proyectos en lenguaje PHP de la asignatura Desarrollo Web en Entorno Servidor de Desarrollo de Aplicaciones Web.
 
-![back](https://github.com/user-attachments/assets/12212561-1b4a-42ac-a087-b4624b39a5b5)
+![back](https://github.com/user-attachments/assets/c543e07a-29dc-4415-ab67-6ab7ca5e86c6)
