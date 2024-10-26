@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de acciones sobre los datos del juego</title>
+</head>
+<body>
+    <h1>Panel de acciones sobre los datos del juego</h1>
+    <h3>Opciones disponibles:</h3>
+    <ul>
+        <li><a href="controladorAccesoRPG.php">Mostrar información del
+        juego</a>
+        <li><h1>Formulario para buscar misisones de un
+        Personaje</h1></li>
+        <li><form action="controlador_accesoBD.php" method="get">
+    <label>Nombre del Personaje:</label>
+    <input type="text" name="characterName"><br>
+    <input type="submit" value="Buscar misiones del
+    personaje">
+    </form>
+    </li>
+        <li>
+            <h1>Formulario para crear un nuevo Personaje</h1>
+    <form action="controlador_accesoBD.php" method="post">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name"
+    required><br><br>
+    <label for="level">Nivel:</label>
+    <input type="number" id="level" name="level" value="1"
+    min="1"><br><br>
+    <label for="experience">Experiencia:</label>
+    <input type="number" id="experience" name="experience"
+    value="0" min="0"><br><br>
+    <label for="health">Salud:</label>
+    <input type="number" id="health" name="health"
+    value="100" min="0"><br><br>
+    <input type="submit" value="Insertar Personaje">
+    </form>
+    </li>
+    </ul>
+</body>
+</html

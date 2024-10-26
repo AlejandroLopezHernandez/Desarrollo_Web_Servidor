@@ -3,7 +3,7 @@ require 'vendor/autoload.php'; // Asegúrate de tener el autoload de Composer
 
 $servername = "mongodb://mongo:27017"; // Nombre del servicio MongoDB en docker-compose
 $dbname = "rpg_game"; // Nombre de la base de datos
-$characterName = "Ulises"; // Nombre del personaje a buscar
+$characterName = $_GET['character']; // Nombre del personaje a buscar
 
 try {
     // Crear conexión a MongoDB
