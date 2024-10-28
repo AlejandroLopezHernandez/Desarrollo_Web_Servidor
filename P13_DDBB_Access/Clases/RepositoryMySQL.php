@@ -49,16 +49,19 @@ class RPGRepositoryMySQL implements RPGRepositoryInterface
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     // Implementación para obtener las quests asociadas a un personaje por su ID
-    public function findQuestsByCharacterId(int $characterId): array
+    public function findQuestsByCharacterName(string $name): array
     {
         $sql = "
         SELECT q.*
         FROM quests q
-        JOIN character_quests cq ON q.id = cq.quest_id
-        WHERE cq.character_id = :characterId
+        JOIN character_quests cq 
+        ON cq.id = cq.quest_id
+        JOIN characters c
+        ON c.id = cq.character_id
+        WHERE c.name = $name
         ";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['characterId' => $characterId]);
+        $stmt->execute(['characterName' => $name]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
@@ -83,7 +86,7 @@ class RPGRepositoryMySQL implements RPGRepositoryInterface
         ON cq.quest_id = q.id
         JOIN characters c
         ON c.id = cq.character_id
-        WHERE c.name = name";
+        WHERE c.name = $name";
         $consulta_personaje_hazaña = $this->conn->prepare($consulta_personaje_hazaña);
         $consulta_personaje_hazaña->execute(['name' => $name]);
         return $consulta_personaje_hazaña->fetchAll(PDO::FETCH_ASSOC);
