@@ -9,20 +9,21 @@
     <h1>Panel de acciones sobre los datos del juego</h1>
     <h3>Opciones disponibles:</h3>
     <ul>
-        <li><a href="controladorAccesoRPG.php">Mostrar información del
+        <li><a href="controlador_accesoBD.php?action=1">Mostrar información del
         juego</a>
         <li><h1>Formulario para buscar misisones de un
         Personaje</h1></li>
         <li><form action="controlador_accesoBD.php" method="get">
     <label>Nombre del Personaje:</label>
-    <input type="text" name="characterName"><br>
+    <input type="text" name="characterName" id="characterName"><br>
     <input type="submit" value="Buscar misiones del
     personaje">
+    <input type="hidden" name="action" value="2">
     </form>
     </li>
         <li>
             <h1>Formulario para crear un nuevo Personaje</h1>
-    <form action="controlador_accesoBD.php" method="post">
+    <form action="controlador_accesoBD.php" method="get">
     <label for="name">Nombre:</label>
     <input type="text" id="name" name="name"
     required><br><br>
@@ -36,6 +37,8 @@
     <input type="number" id="health" name="health"
     value="100" min="0"><br><br>
     <input type="submit" value="Insertar Personaje">
+    <input type="hidden" name="action" value="3">
+    
     </form>
     </li>
     </ul>

@@ -55,41 +55,50 @@ class RPGRepositoryMySQL implements RPGRepositoryInterface
         SELECT q.*
         FROM quests q
         JOIN character_quests cq 
-        ON cq.id = cq.quest_id
+        ON q.id = cq.quest_id
         JOIN characters c
         ON c.id = cq.character_id
-        WHERE c.name = $name
+        WHERE c.name = :name
         ";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['characterName' => $name]);
+        $stmt->execute(['name' => $name]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     // Implementación para encontrar un personaje por su nombre
     public function findCharacterByName(string $name): mixed
     {
         $consulta_personaje_sql = "
         SELECT name
         FROM characters
-        WHERE name = $name";
+        WHERE name = :name";
+
         $consulta_personaje_sql = $this->conn->prepare($consulta_personaje_sql);
         $consulta_personaje_sql->execute(['name' => $name]);
         return $consulta_personaje_sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findQuestOfCharacter(string $name):mixed
+    public function addCharacter(string $name, int $level, int $experience, int $health)
     {
-        $consulta_personaje_hazaña = "
-        SELECT title
-        FROM quests q
-        JOIN character_quests cq
-        ON cq.quest_id = q.id
-        JOIN characters c
-        ON c.id = cq.character_id
-        WHERE c.name = $name";
-        $consulta_personaje_hazaña = $this->conn->prepare($consulta_personaje_hazaña);
-        $consulta_personaje_hazaña->execute(['name' => $name]);
-        return $consulta_personaje_hazaña->fetchAll(PDO::FETCH_ASSOC);
+        $sql_add = "
+        INSERT INTO characters(name,level,experience,health) VALUES
+        (:name,:level,:experience,:health)
+        ";
+        //Parametrizamos la inserción
+        $stmt = $this->conn->prepare($sql_add);
+        //Vinculaamos los valores a los marcados de posición
+        $stmt->bindParam(':name',$name);
+        $stmt->bindParam(':level',$level, PDO::PARAM_INT);
+        $stmt->bindParam(':experience',$experience, PDO::PARAM_INT);
+        $stmt->bindParam(':health',$health, PDO::PARAM_INT);
 
+        //Ejecutamos la inserción
+        $resultado = $stmt->execute();
+
+        if($resultado){
+        return "Personaje añadido con éxito";
+        } else {
+            return "Error al añadir personaje: ".implode(" ",$stmt->errorInfo());
+        }
     }
-    }
+}

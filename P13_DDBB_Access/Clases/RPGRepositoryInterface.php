@@ -19,5 +19,7 @@ interface RPGRepositoryInterface
     // Método para encontrar un personaje por su nombre
     public function findCharacterByName(string $name);
     //Método para encontrar la misión de un personaje
-    public function findQuestOfCharacter(string $name);
+    /*public function findQuestOfCharacter(string $name);*/
+    //Método para insertar personaje
+    public function addCharacter(string $name, int $level, int $experience, int $health);
 }

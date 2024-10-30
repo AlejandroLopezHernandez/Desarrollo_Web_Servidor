@@ -38,7 +38,7 @@ class RPGRepositoryMONGODB implements RPGRepositoryInterface
     // Método para obtener las quests asociadas a un personaje por su ID
     public function findQuestsByCharacterId(int $characterId)
     {
-        $character = $this->db->characters->findOne(['_id'=> 
+        $character = $this->db->characters->findOne(['_id' =>
         new MongoDB\BSON\ObjectId((string)$characterId)]);
         return $character ? $character['quests'] : null;
     }
