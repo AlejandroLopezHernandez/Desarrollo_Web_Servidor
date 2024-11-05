@@ -12,7 +12,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // Nombre del personaje a buscar
-    $characterName = $_GET['character'];
+    $characterName = 'Ulises';
 
     // Preparar y ejecutar la consulta
     $stmt = $conn->prepare("

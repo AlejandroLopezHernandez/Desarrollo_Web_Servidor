@@ -87,18 +87,18 @@ class RPGRepositoryMySQL implements RPGRepositoryInterface
         //Parametrizamos la inserción
         $stmt = $this->conn->prepare($sql_add);
         //Vinculaamos los valores a los marcados de posición
-        $stmt->bindParam(':name',$name);
-        $stmt->bindParam(':level',$level, PDO::PARAM_INT);
-        $stmt->bindParam(':experience',$experience, PDO::PARAM_INT);
-        $stmt->bindParam(':health',$health, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':level', $level, PDO::PARAM_INT);
+        $stmt->bindParam(':experience', $experience, PDO::PARAM_INT);
+        $stmt->bindParam(':health', $health, PDO::PARAM_INT);
 
         //Ejecutamos la inserción
         $resultado = $stmt->execute();
 
-        if($resultado){
-        return "Personaje añadido con éxito";
+        if ($resultado) {
+            return "Personaje añadido con éxito";
         } else {
-            return "Error al añadir personaje: ".implode(" ",$stmt->errorInfo());
+            return "Error al añadir personaje: " . implode(" ", $stmt->errorInfo());
         }
     }
 }
