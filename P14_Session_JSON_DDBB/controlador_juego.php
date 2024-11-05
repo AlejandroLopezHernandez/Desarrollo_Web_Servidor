@@ -1,5 +1,7 @@
 <?php
 require_once 'movimiento.php';
+require_once 'repositoriobbdd.php';
+
 session_start();
 // Si se ha mandado un movimiento
 if (isset($_GET['move'])) {
@@ -62,4 +64,17 @@ if (isset($_GET['move'])) {
         // Redirigir a indice_juego.php para actualizar el tablero
         header('Location: indice_juego.php');
     }
+}
+
+try {
+    $repositorio = new Repositorio_BBDD(
+        $servername = "mysql",
+        $dbname = "rpg_game",
+        $username = "root",
+        $password = '1234'
+    );
+
+    $repositorio->sacar_todos_datos();
+} catch (PDOException $e) {
+    echo "Error de conexión con la base de datos" . $e->getMessage();
 }

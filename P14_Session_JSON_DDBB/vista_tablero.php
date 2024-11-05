@@ -36,5 +36,7 @@ salida</h2>";
         echo "</br>";
         echo "<a href='controlador_juego.php?move=exit'>Salir</a>";
         echo "</div>";
+        echo "</br>";
+        echo "<a href='verPartidasGuardadas.php'>Ver partidas guardadas</a>";
     }
 }

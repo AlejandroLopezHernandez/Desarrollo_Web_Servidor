@@ -1,7 +1,9 @@
 <?php
 require_once 'vista_tablero.php';
+require_once 'verPartidasGuardadas.php';
 session_start();
 $vista = new VistaTablero();
+
 // Inicializar o reiniciar el juego
 // Leer configuración de trampas y salida al iniciar y meterlas en lasesión si no están
 if (!isset($_SESSION['traps']) || !isset($_SESSION['exit'])) {
@@ -14,3 +16,4 @@ if (!isset($_SESSION['traps']) || !isset($_SESSION['exit'])) {
 }
 //Creamos el objeto vista y le damos los parámetros
 $vista->mostrarTablero($_SESSION['position'], $_SESSION['exit'], $_SESSION['score']);
+
