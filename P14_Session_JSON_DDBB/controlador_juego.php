@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 require_once 'movimiento.php';
 require_once 'repositoriobbdd.php';
 
@@ -65,16 +67,31 @@ if (isset($_GET['move'])) {
         header('Location: indice_juego.php');
     }
 }
+//Mostrar la base de datos
+if(isset($_GET['action']) && $_GET['action'] === 'ver_partidas'){
+    echo "Entrando en la acción de partidas guardadas.";
+    try {
+        $repositorio = new Repositorio_BBDD(
+            $servername = "mysql",
+            $dbname = "game_matrix",
+            $username = "root",
+            $password = '1234'
+        );
+    
+        $partidas_guardadas = $repositorio->sacar_todos_datos();
 
-try {
-    $repositorio = new Repositorio_BBDD(
-        $servername = "mysql",
-        $dbname = "rpg_game",
-        $username = "root",
-        $password = '1234'
-    );
+        echo "<h2> Partidas guardadas </h2>";
 
-    $repositorio->sacar_todos_datos();
-} catch (PDOException $e) {
-    echo "Error de conexión con la base de datos" . $e->getMessage();
+        foreach($partidas_guardadas as $partida){
+            echo "ID: ".htmlspecialchars($partida['id_session'])."<br/>";
+            echo "Score: ".htmlspecialchars($partida['score'])."<br/>";
+            echo "Date session: ".htmlspecialchars($partida['date_session'])."<br/>";
+            echo "<hr/>";
+
+            echo "<br/><a href='indice_juego.php'> Volver al juego</a>";
+        }
+    } catch (PDOException $e) {
+        echo "Error de conexión con la base de datos" . $e->getMessage();
+    }
+
 }

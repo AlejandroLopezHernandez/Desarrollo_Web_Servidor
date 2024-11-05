@@ -1,7 +1,7 @@
 <?php
 class VistaTablero
 {
-    public function __construc() {}
+    public function __construct() {}
     public function mostrarTablero($pos, $meta, $score)
     {
         // Mostrar el tablero de 10x10 y los controles de movimiento
@@ -37,6 +37,6 @@ salida</h2>";
         echo "<a href='controlador_juego.php?move=exit'>Salir</a>";
         echo "</div>";
         echo "</br>";
-        echo "<a href='verPartidasGuardadas.php'>Ver partidas guardadas</a>";
+        echo "<a href='controlador_juego.php?action='ver_partidas'>Ver partidas guardadas</a>";
     }
 }

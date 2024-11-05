@@ -1,6 +1,6 @@
 <?php
 require_once 'vista_tablero.php';
-require_once 'verPartidasGuardadas.php';
+require_once 'repositoriobbdd.php';
 session_start();
 $vista = new VistaTablero();
 
