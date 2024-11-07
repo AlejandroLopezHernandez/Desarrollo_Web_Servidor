@@ -54,6 +54,19 @@ if (isset($_GET['move'])) {
         echo "<h2>Felicidades! Has llegado a la salida.</h2>";
         echo "<h3>Puntuación final: {$_SESSION['score']}</h3>";
         echo "<h4>Trayectoria recorrida:</h4>";
+
+        //Guardar partida en la base de datos
+        $repositorio = new Repositorio_BBDD(
+            'mysql',
+            'game_matrix',
+            'root',
+            '1234'
+        );
+        $guardado = $repositorio->guardar_partida($_SESSION['score']);
+        if($guardado == 1){
+            echo "<h4> Partida guardada con éxito</h4>";
+        }
+        //Imprimimos los movimientos
         echo "<pre>" . json_encode($_SESSION['moves'], JSON_PRETTY_PRINT) .
             "</pre>";
         foreach ($_SESSION['moves'] as $movimiento) {
@@ -68,14 +81,13 @@ if (isset($_GET['move'])) {
     }
 }
 //Mostrar la base de datos
-if(isset($_GET['action']) && $_GET['action'] === 'ver_partidas'){
-    echo "Entrando en la acción de partidas guardadas.";
+if(isset($_GET['action']) && $_GET['action'] == 'ver_partidas'){
     try {
         $repositorio = new Repositorio_BBDD(
-            $servername = "mysql",
-            $dbname = "game_matrix",
-            $username = "root",
-            $password = '1234'
+            'mysql',
+            'game_matrix',
+            'root',
+            '1234'
         );
     
         $partidas_guardadas = $repositorio->sacar_todos_datos();
