@@ -1,0 +1,169 @@
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+} 
+/* Estilos para el encabezado */ 
+header { 
+    width: 100%; 
+    background-color: #4CAF50; 
+    padding: 10px 0; 
+    text-align: center; 
+} 
+ 
+header h1 { 
+    color: white; 
+    margin: 0; 
+} 
+ 
+/* Estilos de la barra de navegación */ 
+nav { 
+    margin-top: 20px; 
+    display: flex; 
+    gap: 20px; 
+} 
+ 
+nav a { 
+    text-decoration: none; 
+    color: white; 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+} 
+ 
+nav a:hover { 
+    background-color: #45a049; 
+} 
+ 
+/* Estilos para el contenido principal */ 
+main { 
+    margin-top: 30px; 
+    width: 80%; 
+} 
+ 
+/* Estilos para la tabla */ 
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+} 
+th, td { 
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    text-align: center; 
+} 
+ 
+th { 
+    background-color: #f4f4f4; 
+    font-weight: bold; 
+} 
+ 
+/* Estilos generales */ 
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+} 
+ 
+/* Estilos para el encabezado */ 
+header { 
+    width: 100%; 
+    background-color: #4CAF50; 
+    padding: 10px 0; 
+    text-align: center; 
+} 
+header h1 { 
+    color: white; 
+    margin: 0; 
+} 
+ 
+/* Estilos para el contenido principal */ 
+main { 
+    margin-top: 30px; 
+    width: 80%; 
+    display: flex; 
+    justify-content: center; 
+} 
+ 
+/* Estilos del formulario de subida */ 
+.form-subida { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    width: 100%; 
+    max-width: 400px; 
+} 
+ 
+/* Estilos para los elementos del formulario */ 
+.form-subida input[type="file"] { 
+    margin: 15px 0; 
+    padding: 8px;
+    width: 100%; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    font-size: 16px; 
+} 
+ 
+.form-subida button { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+} 
+ 
+.form-subida button:hover { 
+    background-color: #45a049; 
+} 
+/* Estilos del formulario de subida */ 
+.form-subida { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    width: 100%;
+    max-width: 400px; 
+} 
+ 
+/* Estilos para los elementos del formulario */ 
+.form-subida input[type="file"] { 
+    margin: 15px 0; 
+    padding: 8px; 
+    width: 100%; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    font-size: 16px; 
+} 
+ 
+.form-subida button { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+} 
+ 
+.form-subida button:hover { 
+    background-color: #45a049; 
+} 
+  
