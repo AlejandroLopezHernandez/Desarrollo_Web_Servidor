@@ -20,15 +20,13 @@ class VistaHTML
                 <tr> 
                     <th>Nombre Población</th> 
                     <th>Personas Afectadas</th> 
-<th>Comunicaciones Cortadas</th> 
+                    <th>Comunicaciones Cortadas</th> 
                     <th>personas_afectadas </th> 
-                    <th>comunicaciones_cortadas</th> 
                     <th>agua</th> 
                     <th>productos_limpieza</th> 
                     <th>viveres</th> 
                     <th>medicinas</th> 
                    <th>otros</th> 
- 
                     <th>Fecha de Reporte</th> 
                 </tr> 
             </thead> 
@@ -37,28 +35,22 @@ class VistaHTML
 
         foreach ($municipios as $registro) {
             echo "<tr> 
-                            <td>{$registro['nombre_poblacion']}<
-/td> 
+                            <td>{$registro['nombre_poblacion']}<td> 
                             <td>{$registro['personas_afectadas']}</td> 
-                            <td>{$registro['comunicaciones_corta
-das']}</td> 
-                            
-                            <td>{$registro['personas_afectadas']}</td> 
-                            <td>{$registro['comunicaciones_corta
-das']}</td> 
+                            <td>{$registro['comunicaciones_cortadas']}</td>                             
+                            <td>{$registro['personas_afectadas']}</td>  
                              <td>{$registro['agua']}</td> 
                             <td>{$registro['productos_limpieza']}</td> 
                             <td>{$registro['viveres']}</td> 
                             <td>{$registro['medicinas']}</td>
-<td>{$registro['otros']}</td> 
-                            <td>{$registro['fecha_reporte']}</td
-> 
+                            <td>{$registro['otros']}</td> 
+                            <td>{$registro['fecha_reporte']}</td> 
                           </tr>";
         }
         echo ' 
             </tbody> 
-        </table> 
-    </body>';
+            </table> 
+            </body>';
         echo '<h1> Total afectados ' . $total . '</h1>';
         echo '</html>';
     }

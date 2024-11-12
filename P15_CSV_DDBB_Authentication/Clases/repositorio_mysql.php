@@ -21,14 +21,70 @@ class RepositorioMYSQL
     public function __construct($host, $db, $usuario, $pass)
     {
         $this->conn = new PDO(
-            'mysql:host='. $host .';dbname='.$db,$usuario,$pass
+            'mysql:host=' . $host . ';dbname=' . $db,
+            $usuario,
+            $pass
         );
         $this->conn->setAttribute(
             PDO::ATTR_ERRMODE,
             PDO::ERRMODE_EXCEPTION
         );
     }
-    public function obtenerUltimaFechaReporte($municipio) {}
+    public function obtenerUltimaFechaReporte($municipio)
+    {
+        $query = "SELECT fecha_reporte
+                  FROM estado_municipios
+                  WHERE nombre_poblacion = :municipio
+                  ORDER BY fecha_reporte DESC
+                  LIMIT 1";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['municipio' => $municipio]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function guardarEstadoMunicipio(
+        $nombre_poblacion,
+        $personas_afectadas,
+        $comunicaciones_cortadas,
+        $agua,
+        $productos_limpieza,
+        $viveres,
+        $medicinas,
+        $otros
+    ){
+        //Comprobamos si el municipio ya existe
+        $query ="SELECT COUNT(*) AS total
+                FROM estado_municipios
+                WHERE nombre_poblacion = :nombre_poblacion";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':nombre_poblacion',$nombre_poblacion);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if($resultado[0]['total'] > 0){
+        $this->actualizarEstadoMunicipio(
+            $nombre_poblacion,
+            $personas_afectadas,
+            $comunicaciones_cortadas,
+            $agua,
+            $productos_limpieza,
+            $viveres,
+            $medicinas,
+            $otros    
+        );
+    } else {
+        $this->insertarEstadoMunicipio(
+            $nombre_poblacion,
+            $personas_afectadas,
+            $comunicaciones_cortadas,
+            $agua,
+            $productos_limpieza,
+            $viveres,
+            $medicinas,
+            $otros    
+        );
+    }
+    }
     // Método para insertar un nuevo estado del municipio 
     private function insertarEstadoMunicipio(
         $nombre_poblacion,
@@ -129,14 +185,21 @@ class RepositorioMYSQL
     }
     public function obtenerMunicipiosConMasAfectados()
     {
-        $query = "SELECT nombre_poblacion,personas_afectadas
+        $query =          "SELECT nombre_poblacion
                           FROM estado_municipios
                           ORDER BY personas_afectadas DESC
                           LIMIT 1";
-        $municipios = $this->conn->query($query);
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $municipio = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Devuelve un array asociativo de información de municipios 
-        return $municipios;
+        if(isset($municipio[0]['nombre_poblacion'])){
+            return $municipio[0]['nombre_poblacion'];
+        } else {
+            return null;
+        }
     }
 
     public function obtenerNumeroTotalfectados(): int
@@ -153,6 +216,15 @@ class RepositorioMYSQL
 
         // En caso de que la consulta falle, devolver 0 o lanzar una excepción 
         return 0;
+    }
+    public function mostrarInfoMunicipios(){
+        $query = "SELECT *
+                  FROM estado_municipios";
+    $stmt=$this->conn->prepare($query);
+    $stmt->execute();
+    $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultado;
     }
     public function cerrarConexion()
     {
