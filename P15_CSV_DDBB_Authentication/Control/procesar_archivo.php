@@ -18,6 +18,12 @@ if (isset($_FILES['archivo_csv'])) {
     $municipio = $datos[0];
     $personas_afectadas = $datos[1];
     $comunicaciones_cortadas = $datos[2];
+    //Usamos este bloque de código para procesar el sí y el no
+    if ($comunicaciones_cortadas === "NO") {
+        $comunicaciones_cortadas = 0;
+    } else if ($comunicaciones_cortadas === "SI") {
+        $comunicaciones_cortadas = 1;
+    }
     $necesidades_ayuda = $datos[3];
 
     //2.- Crear carpeta del municipio si no existe, NOTA: El nombre del municipio se debe poner 
@@ -46,18 +52,18 @@ if (isset($_FILES['archivo_csv'])) {
     if (stripos($necesidades_ayuda, 'agua') !== false) {
         $agua = 1;
     }
-    if(stripos($necesidades_ayuda,'productos_limpieza')!== false){
+    if (stripos($necesidades_ayuda, 'productos_limpieza') !== false) {
         $productos_limpieza = 1;
     }
-    if(stripos($necesidades_ayuda,'víveres')!== false){
+    if (stripos($necesidades_ayuda, 'víveres') !== false) {
         $viveres = 1;
     }
-    if(stripos($necesidades_ayuda,'medicinas')!== false){
+    if (stripos($necesidades_ayuda, 'medicinas') !== false) {
         $medicinas = 1;
     }
     // Asignar a $otros si no se encuentra ninguna palabra clave
     $otros = 0;
-    if($agua === 0 && $productos_limpieza === 0 && $viveres === 0 && $medicinas === 0){
+    if ($agua === 0 && $productos_limpieza === 0 && $viveres === 0 && $medicinas === 0) {
         $otros = $necesidades_ayuda;
     }
     //5.- Insertar o actualizar los datos en la base de datos
@@ -74,4 +80,5 @@ if (isset($_FILES['archivo_csv'])) {
     );
     //6.- Cerrar el archivo
     fclose($puntero_csv);
+    $repositorio->cerrarConexion();
 }

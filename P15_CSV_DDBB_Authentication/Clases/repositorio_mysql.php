@@ -35,8 +35,7 @@ class RepositorioMYSQL
         $query = "SELECT fecha_reporte
                   FROM estado_municipios
                   WHERE nombre_poblacion = :municipio
-                  ORDER BY fecha_reporte DESC
-                  LIMIT 1";
+                  ORDER BY fecha_reporte DESC";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute(['municipio' => $municipio]);
@@ -51,39 +50,39 @@ class RepositorioMYSQL
         $viveres,
         $medicinas,
         $otros
-    ){
+    ) {
         //Comprobamos si el municipio ya existe
-        $query ="SELECT COUNT(*) AS total
+        $query = "SELECT COUNT(*) AS total
                 FROM estado_municipios
                 WHERE nombre_poblacion = :nombre_poblacion";
 
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':nombre_poblacion',$nombre_poblacion);
-    $stmt->execute();
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    if($resultado[0]['total'] > 0){
-        $this->actualizarEstadoMunicipio(
-            $nombre_poblacion,
-            $personas_afectadas,
-            $comunicaciones_cortadas,
-            $agua,
-            $productos_limpieza,
-            $viveres,
-            $medicinas,
-            $otros    
-        );
-    } else {
-        $this->insertarEstadoMunicipio(
-            $nombre_poblacion,
-            $personas_afectadas,
-            $comunicaciones_cortadas,
-            $agua,
-            $productos_limpieza,
-            $viveres,
-            $medicinas,
-            $otros    
-        );
-    }
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nombre_poblacion', $nombre_poblacion);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($resultado[0]['total'] > 0) {
+            $this->actualizarEstadoMunicipio(
+                $nombre_poblacion,
+                $personas_afectadas,
+                $comunicaciones_cortadas,
+                $agua,
+                $productos_limpieza,
+                $viveres,
+                $medicinas,
+                $otros
+            );
+        } else {
+            $this->insertarEstadoMunicipio(
+                $nombre_poblacion,
+                $personas_afectadas,
+                $comunicaciones_cortadas,
+                $agua,
+                $productos_limpieza,
+                $viveres,
+                $medicinas,
+                $otros
+            );
+        }
     }
     // Método para insertar un nuevo estado del municipio 
     private function insertarEstadoMunicipio(
@@ -186,26 +185,18 @@ class RepositorioMYSQL
     public function obtenerMunicipiosConMasAfectados()
     {
         $query =          "SELECT nombre_poblacion
-                          FROM estado_municipios
-                          ORDER BY personas_afectadas DESC
-                          LIMIT 1";
+                           FROM estado_municipios
+                           ORDER BY personas_afectadas DESC";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        $municipio = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Devuelve un array asociativo de información de municipios 
-        if(isset($municipio[0]['nombre_poblacion'])){
-            return $municipio[0]['nombre_poblacion'];
-        } else {
-            return null;
-        }
+        return $municipio = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function obtenerNumeroTotalfectados(): int
     {
         $query = "SELECT SUM(personas_afectadas) as suma FROM 
-                estado_municipios  ";
+                estado_municipios";
         $result = $this->conn->query($query);
 
         // Verificar si la consulta se ejecutó correctamente 
@@ -213,18 +204,18 @@ class RepositorioMYSQL
             $row = $result->fetch(PDO::FETCH_ASSOC);
             return (int)$row['suma']; // Retorna la suma como un entero 
         }
-
         // En caso de que la consulta falle, devolver 0 o lanzar una excepción 
         return 0;
     }
-    public function mostrarInfoMunicipios(){
+    public function mostrarInfoMunicipios()
+    {
         $query = "SELECT *
                   FROM estado_municipios";
-    $stmt=$this->conn->prepare($query);
-    $stmt->execute();
-    $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $resultado;
+        return $resultado;
     }
     public function cerrarConexion()
     {
