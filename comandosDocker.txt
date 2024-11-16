@@ -1,0 +1,11 @@
+Comandos docker para acceder a una base de datos:
+docker exec -ti mysql /bin/bash
+
+Y después nos autentificamos:
+mysql -u root -p
+
+Para seleccionar una base de datos:
+USE Nombre_de_la_bbdd;
+
+Para ver las tablas:
+SHOW TABLES;	

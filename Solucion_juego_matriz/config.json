@@ -1,0 +1,10 @@
+{
+    "init":{"row":0,"col":0},
+    "traps": [
+        {"row": 2, "col": 3},
+        {"row": 5, "col": 6},
+        {"row": 8, "col": 7},
+        {"row": 6, "col": 7}
+    ],
+    "exit": {"row": 7, "col": 9}
+}

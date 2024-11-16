@@ -1,10 +1,12 @@
 <?php
+require_once 'VistaHTMLInterface.php';
+class VistaHTMLGrafica implements VistaHTMLInterface
+{
 
-class VistaHTMLGrafica implements VistaHTMLInterface {
-
-private static function renderChartScripts() {
-    echo '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>';
-    echo '<style>
+    private static function renderChartScripts()
+    {
+        echo '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>';
+        echo '<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -17,13 +19,14 @@ private static function renderChartScripts() {
             margin: 20px auto;
         }
     </style>';
-}
+    }
 
-public static function renderUsuarioMasPopular($usuario) {
-    self::renderChartScripts();
-    echo "<h3>Usuario más popular</h3>";
-    echo "<canvas id='chartUsuarioMasPopular'></canvas>";
-    echo "<script>
+    public static function renderUsuarioMasPopular($usuario)
+    {
+        self::renderChartScripts();
+        echo "<h3>Usuario más popular</h3>";
+        echo "<canvas id='chartUsuarioMasPopular'></canvas>";
+        echo "<script>
         const ctx = document.getElementById('chartUsuarioMasPopular').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
@@ -44,15 +47,16 @@ public static function renderUsuarioMasPopular($usuario) {
             }
         });
     </script>";
-}
+    }
 
-public static function renderUsuariosSeguidores($usuarios) {
-    self::renderChartScripts();
-    echo "<h3>Usuarios y seguidores</h3>";
-    echo "<canvas id='chartUsuariosSeguidores'></canvas>";
-    $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
-    $seguidores = json_encode(array_column($usuarios, 'seguidores'));
-    echo "<script>
+    public static function renderUsuariosSeguidores($usuarios)
+    {
+        self::renderChartScripts();
+        echo "<h3>Usuarios y seguidores</h3>";
+        echo "<canvas id='chartUsuariosSeguidores'></canvas>";
+        $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
+        $seguidores = json_encode(array_column($usuarios, 'seguidores'));
+        echo "<script>
         const ctx2 = document.getElementById('chartUsuariosSeguidores').getContext('2d');
         new Chart(ctx2, {
             type: 'bar',
@@ -73,15 +77,16 @@ public static function renderUsuariosSeguidores($usuarios) {
             }
         });
     </script>";
-}
+    }
 
-public static function renderUsuariosConMasLikes($usuarios) {
-    self::renderChartScripts();
-    echo "<h3>Usuarios con más 'likes'</h3>";
-    echo "<canvas id='chartUsuariosConMasLikes'></canvas>";
-    $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
-    $likes = json_encode(array_column($usuarios, 'total_likes'));
-    echo "<script>
+    public static function renderUsuariosConMasLikes($usuarios)
+    {
+        self::renderChartScripts();
+        echo "<h3>Usuarios con más 'likes'</h3>";
+        echo "<canvas id='chartUsuariosConMasLikes'></canvas>";
+        $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
+        $likes = json_encode(array_column($usuarios, 'total_likes'));
+        echo "<script>
         const ctx3 = document.getElementById('chartUsuariosConMasLikes').getContext('2d');
         new Chart(ctx3, {
             type: 'bar',
@@ -102,15 +107,16 @@ public static function renderUsuariosConMasLikes($usuarios) {
             }
         });
     </script>";
-}
+    }
 
-public static function renderTotalPublicacionesPorUsuario($usuarios) {
-    self::renderChartScripts();
-    echo "<h3>Total de publicaciones por usuario</h3>";
-    echo "<canvas id='chartTotalPublicacionesPorUsuario'></canvas>";
-    $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
-    $publicaciones = json_encode(array_column($usuarios, 'total_publicaciones'));
-    echo "<script>
+    public static function renderTotalPublicacionesPorUsuario($usuarios)
+    {
+        self::renderChartScripts();
+        echo "<h3>Total de publicaciones por usuario</h3>";
+        echo "<canvas id='chartTotalPublicacionesPorUsuario'></canvas>";
+        $nombres = json_encode(array_column($usuarios, 'nombre_usuario'));
+        $publicaciones = json_encode(array_column($usuarios, 'total_publicaciones'));
+        echo "<script>
         const ctx4 = document.getElementById('chartTotalPublicacionesPorUsuario').getContext('2d');
         new Chart(ctx4, {
             type: 'bar',
@@ -131,5 +137,5 @@ public static function renderTotalPublicacionesPorUsuario($usuarios) {
             }
         });
     </script>";
-}
+    }
 }
