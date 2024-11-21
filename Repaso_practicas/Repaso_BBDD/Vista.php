@@ -102,4 +102,39 @@ class Vista_Transporte{
         </table> 
         </body>';
     }
+    public function MostrarTodosAviones($avion){
+        echo ' 
+    <!DOCTYPE html> 
+    <html lang="es"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Información sobre los aviones</title> 
+    </head> 
+    <body> 
+        <h2>Información sobre los aviones</h2> 
+        <table border="1"> 
+            <thead> 
+                <tr> 
+                    <th>Nombre</th>
+                    <th>Avion ID</th> 
+                    <th>Altura máxima</th> 
+                    <th>Velocidad máxima</th> 
+                    <th>Tipo de ala</th> 
+                </tr> 
+            </thead> 
+            <tbody>';
+        foreach($avion as $a){
+            echo "<tr> 
+                <td>{$a['nombre']}</td> 
+                <td>{$a['identificador']}</td> 
+                <td>{$a['altura_maxima']}</td> 
+                <td>{$a['velocidad_maxima']}</td>                              
+                 <td>{$a['tipo_ala']}</td> 
+              </tr>";
+        }
+        echo ' 
+        </tbody> 
+        </table> 
+        </body>';
+    }
 }

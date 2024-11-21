@@ -54,4 +54,15 @@ class Repostorio_MySQL_Transporte{
         $consulta_final->execute();
         return $consulta_final->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function MostrarAviones(){
+        $consulta_todos_aviones = "
+        SELECT v.nombre ,a.*
+        FROM AVION a
+        INNER JOIN VEHICULO v 
+        ON v.identificador = a.identificador
+        ";
+        $consulta_final = $this->conexion->prepare($consulta_todos_aviones);
+        $consulta_final->execute();
+        return $consulta_final->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

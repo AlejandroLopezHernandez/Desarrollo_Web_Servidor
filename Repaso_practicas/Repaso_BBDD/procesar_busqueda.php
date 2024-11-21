@@ -11,7 +11,7 @@ try{
     );
     if(isset($_GET['action']) && $_GET['action'] == 1){
         $barcos = $repositorio->buscarBarcoPorNombre($_GET['buscar_barco']);
-
+        var_dump($barcos); //Sirve para imprimir sólo el contenido de una variable
         if(!empty($barcos)){
           $vista->MostrarBarco($barcos);
         } else {
@@ -28,6 +28,13 @@ try{
         $todos_barcos = $repositorio->MostrarBarcos();
         if(!empty($todos_barcos)){
             $vista->MostrarTodosBarcos($todos_barcos);
+        } 
+    }
+    else if(isset($_GET['action']) && $_GET['action'] == 4){
+        
+        $todos_aviones = $repositorio->MostrarAviones();
+        if(!empty($todos_aviones)){
+            $vista->MostrarTodosAviones($todos_aviones);
         } 
     }
 } catch(PDOException $excepcion){
