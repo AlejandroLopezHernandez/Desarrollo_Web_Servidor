@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir datos de inmigración</title>
+</head>
+<body>
+    <h3>Consulta y subida de datos de inmigración</h3>
+    <form action="procesamiento_archivos.php" method="post"
+    enctype="multipart/form-data" class="form-subida">
+    <input type="hidden" name="action" value="1">
+    <input type="file" name="archivo_csv" id="archivo_csv" accept=".csv" required>
+    <button type="submit">Subir archivo</button>
+    </form> <br><br>
+    <li><a href="procesamiento_archivos.php?action=2">Consultar datos de inmigración</a></li>
+</body>
+</html>
