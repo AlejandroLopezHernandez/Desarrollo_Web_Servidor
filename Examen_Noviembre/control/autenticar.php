@@ -1,26 +1,19 @@
 <?php
 session_start();
 require_once '../clases/RepositoryMySQL.php';
-if($_SERVER['REQUEST_METHOD']==='POST'){
-    $usuario_ingresado = $_POST['user'];
-    $contraseña_ingresada = $_POST['password'];
-
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $repositorio = new RepositorioSQLFlotaVehiculos('mysql','FLOTA','root','1234');
+    $usuario = $_POST['user'];
+    $contraseña = $_POST['password'];
 
-    $ususario_bddd = $repositorio->ConseguirUsuarioYContraseña($usuario_ingresado);
-    
-    if($ususario_bddd){
-        if(password_verify($contraseña_ingresada,$ususario_bddd['password'])){
-            echo "Sesión iniciada correctamente.Bienvenido/a";
-            $_SESSION['admin'] = $usuario_ingresado;
-            //Poner Location es obligatorio
-            header('Location: ../index.html');
-            exit;
-        } else {
-            echo "Contraseña incorrecta";
-        }
+    $usuario_admin = $repositorio->ConseguirUsuarioYContraseña($usuario);
+
+    if($usuario_admin && password_verify($contraseña,$usuario_admin['password'])){
+        echo "Sesión iniciada con éxto";
+        $_SESSION['usuario_admin'] = $usuario;
+        header('Location:../index.html');
     } else {
-        echo "Usuario incorrecto";
+        echo "Contraseña incorrecta";
     }
 }
 ?>

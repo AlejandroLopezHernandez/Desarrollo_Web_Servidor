@@ -1,0 +1,11 @@
+{
+  "vehiculos": [
+    { "id_vehiculo": 60, "tipo": "camion","matricula": "3284ABCD","alarma_revision": 0,"coordenada_x": 0,"coordenada_y":0 },
+    { "id_vehiculo": 61, "tipo": "furgoneta","matricula": "3779DEFD", "alarma_revision": 0,"coordenada_x": 0,"coordenada_y": 0},
+    { "id_vehiculo": 62, "tipo": "camion", "matricula": "ABCDF2222","alarma_revision": 0,"coordenada_x": 0,"coordenada_y": 0}
+  ],
+  "conductores": [
+    {"id_conductor": 62,"nombre": "Juan Pérez", "telefono": "600123456"},
+    {"id_conductor": 63,"nombre": "Ana Gómez","telefono": "600654321"}
+  ]
+}

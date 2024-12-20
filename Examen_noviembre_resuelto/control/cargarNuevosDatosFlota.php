@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivo'])) {
     }
 
     // Procesar vehículos
-    $contador_vehiculos = 0; // El nuemro de vehiculos no lo sabemos hasta que no los comprobemos
+    $contador_vehiculos = 0; // El numero de vehiculos no lo sabemos hasta que no los comprobemos
     foreach ($vehiculos as $vehiculo) {
         $id_conductor = $vehiculo['id'];
         $matricula = $vehiculo['matricula'];

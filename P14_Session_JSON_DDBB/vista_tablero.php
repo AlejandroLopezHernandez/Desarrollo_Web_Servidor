@@ -6,7 +6,7 @@ class VistaTablero
     {
         // Mostrar el tablero de 10x10 y los controles de movimiento
         echo "<h2>Juego: Mueve el personaje para llegar a la
-salida</h2>";
+        salida</h2>";
         echo "<h3>Puntuación: {$score}</h3>";
         echo "<table border='1' cellpadding='10'>";
         for ($i = 0; $i < 10; $i++) {
