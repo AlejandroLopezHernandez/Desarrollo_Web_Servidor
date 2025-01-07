@@ -30,7 +30,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     }
 
     
-
 fclose($puntero);
 
 } else if(isset($_GET['action']) && $_GET['action'] == 2) {

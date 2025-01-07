@@ -14,9 +14,6 @@ $vista = new VistaHTML();
 
 
 
-
-
-
 // Procesar datos enviados por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener localidad desde el formulario
