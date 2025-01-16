@@ -3,10 +3,10 @@ require_once 'VistaHTMLInterface.php';
 class VistaHTML implements VistaHTMLInterface {
 
     public static function renderChartScripts(){}
-    public static function renderUsuarioMasPopular($usuario) {
-       
+    public static function renderUsuarioMasPopular($usuarios) {
+        foreach ($usuarios as $usuario) {
             echo "<li>{$usuario['nombre_usuario']} - Seguidores: {$usuario['seguidores']}</li>";
-        
+        }
         echo "</ul>";
     }
     public static function renderUsuariosSeguidores($usuarios) {
@@ -28,7 +28,7 @@ class VistaHTML implements VistaHTMLInterface {
     public static function renderTotalPublicacionesPorUsuario($usuarios) {
         echo "<h3>Total de publicaciones por usuario</h3><ul>";
         foreach ($usuarios as $usuario) {
-            echo "<li>{$usuario['nombre_usuario']} - Publicaciones: {$usuario['total_publicaciones']}</li>";
+            echo "<li>{$usuario['nombre_usuario']} - Publicaciones: {$usuario['publicaciones']}</li>";
         }
         echo "</ul>";
     }

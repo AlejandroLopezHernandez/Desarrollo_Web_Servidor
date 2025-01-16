@@ -27,15 +27,16 @@ class RepositorioMYSQL_RedSocial
     }
     public function ObtenerTresUsuariosMasLikes()
     {
-        $sql = "SELECT u.nombre_usuario,SUM(p.likes) AS likes
+        $sql = 'SELECT u.nombre_usuario,SUM(p.likes) AS "total_likes"
             FROM usuarios u
             INNER JOIN publicaciones p 
             ON p.id_usuario = u.id_usuario
             GROUP BY u.nombre_usuario
-            ORDER BY likes DESC
-            LIMIT 3";
+            ORDER BY total_likes DESC
+            LIMIT 3';
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute();
+        var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function NumeroPublicacionesPorUsuario()
@@ -51,7 +52,7 @@ class RepositorioMYSQL_RedSocial
     }
     public function ObtenerUsuarioMasPopular()
     {
-        $sql = "SELECT nombre_usuario
+        $sql = "SELECT nombre_usuario,seguidores
             FROM usuarios
             ORDER BY seguidores DESC
             LIMIT 1";

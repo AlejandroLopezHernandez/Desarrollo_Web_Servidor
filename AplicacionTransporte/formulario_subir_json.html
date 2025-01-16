@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de subida de archivos JSON</title>
+    <style>
+        body{
+            background-color: rgb(247, 206, 139);
+        }
+    </style>
+</head>
+<body>
+    <form action="subir_json.php" method="post" enctype="multipart/form-data">
+    Selecciona ruta archivo JSON para subir:
+    <!--Del atributo "name" vas a tener que usarlo con la variable $_FILES-->
+    <input type="file" name="archivo_subido" id="archivo_subido" accept=".json" required>
+    <!--Usa siempre la variable archivo_subido-->
+    <input type="submit" value="Subir" name="Subir al servidor" required>
+</form>
+</body>
+</html>

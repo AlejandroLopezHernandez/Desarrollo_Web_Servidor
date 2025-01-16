@@ -1,0 +1,6 @@
+id,nombre,codigo_modelo,capacidad_carga,activo
+54,Airbus A380,A380,100000,S
+55,Airbus A321,A321,50000,S
+56,Titanic,hundido,0,N
+57,Barco Vikingo,Vking,10000,S
+

@@ -170,14 +170,14 @@ public function vehiculos_revision(){
     return $consulta_parametrizada->fetch(PDO::FETCH_ASSOC);
 }
 public function buscar_conductor_x_id($id){
-    $consulta = "SELECT v.id_conductor AS 'id', matricula,nombre,localidad,kilometros,tiempo_maximo
+    $consulta = "SELECT v.id_vehiculo AS 'id', matricula,nombre,localidad,kilometros,tiempo_maximo
                 FROM VEHICULO v
                 INNER JOIN ENTREGA e
                 ON v.id_vehiculo = e.id_vehiculo
                 INNER JOIN CONDUCTOR c
                 ON c.id_conductor = e.id_conductor
                 WHERE tiempo_real IS NULL
-                AND v.id_conductor = :id";
+                AND v.id_vehiculo = :id";
     $consulta_parametrizada = $this->conexion->prepare($consulta);
     $consulta_parametrizada->bindParam(':id',$id,PDO::PARAM_STR);
     $consulta_parametrizada->execute();

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar en BBDD</title>
+    <style>
+        body{
+            background-color: rgb(247, 206, 139);
+        }
+    </style>
+</head>
+<body>
+    <h3>Búsqueda en una base de datos</h3>
+    <form action="procesar_busqueda.php" method="get">
+        <input type="hidden" name="action" value="1">
+        <label>Buscar barco por nombre:</label>
+        <input type="text" name="buscar_barco" id="buscar_barco">
+        <input type="submit" value="Buscar barco"> <br> <br>
+    </form> 
+    <form action="procesar_busqueda.php" method="get">
+        <input type="hidden" name="action" value="2">
+        <label>Buscar avión por nombre: </label>
+        <input type="text" name="buscar_avion" id="buscar_avion">
+        <input type="submit" value="Buscar avión">
+    </form><br>
+    <form action="procesar_busqueda.php" method="get">
+        <input type="hidden" name="action" value="3">
+        <label>Buscar camión por nombre del conductor: </label>
+        <input type="text" name="buscar_camion" id="buscar_camion">
+        <input type="submit" value="Buscar camión">
+    </form><br>
+    <form action="procesar_busqueda.php" method="get">
+        <input type="hidden" name="action" value="8">
+        <label>Buscar ruta del camión por ID: </label>
+        <input type="text" name="buscar_ruta" id="buscar_ruta">
+        <input type="submit" value="Buscar ruta">
+    </form><br>
+    
+    <li><a href="autentificacion.php">Iniciar sesión</a></li>
+    <li><a href="procesar_busqueda.php?action=4">Mostrar todos los barcos</a></li>
+    <li><a href="procesar_busqueda.php?action=5">Mostrar todos los aviones</a></li>
+    <li><a href="procesar_busqueda.php?action=6">Mostrar todos los camiones</a></li>
+    <li><a href="procesar_busqueda.php?action=7">Mostrar todos los conductores y sus camiones</a></li>
+    <li><a href="formulario_subir_json.html"> Subir archivo en formato JSON</a></li>
+    <li><a href="formulario_subir_csv.html"> Subir archivo en formato CSV</a></li>
+    <li><a href="ver_estadisticas.php">Ver estadísticas de los vehículos</a></li>
+    <li><a href="formulario_update.html">Actualizar precio de mantenimiento</a></li>
+    <li><a href="cerrarSesion.php">Cerrar sesión</a></li>
+</body>
+</html>

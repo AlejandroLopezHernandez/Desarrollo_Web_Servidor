@@ -1,0 +1,10 @@
+{
+    "aviones":[
+        {"id":50,"altura_maxima":9000,"velocidad_maxima":800,"tipo_alas":"Alas fijas","autonomia":"08:00:00"},
+        {"id":51,"altura_maxima":10000,"velocidad_maxima":900,"tipo_alas":"Alas giratorias","autonomia":"10:00:00"}
+    ],
+    "barcos":[
+        {"id":52,"longitud":300,"tipo_propulsion":"Electrico","calado_maximo":15},
+        {"id":53,"longitud":500,"tipo_propulsion":"Vela","calado_maximo":16}
+    ]
+}

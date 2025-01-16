@@ -1,0 +1,8 @@
+{
+    "vehiculos":[
+        {"id":50,"nombre":"Boeing 737-800","codigo_modelo":"RYR_plane","capacidad_carga":250000,"activo":"S"},
+        {"id":51,"nombre":"Airbus A320","codigo_modelo":"LAUDA","capacidad_carga":200000,"activo":"N"},
+        {"id":52,"nombre":"Costa Concordia","codigo_modelo":"ITA","capacidad_carga":50000,"activo":"S"},
+        {"id":53,"nombre":"MSC Italia","codigo_modelo":"MSC","capacidad_carga":80000,"activo":"S"}
+    ]
+}

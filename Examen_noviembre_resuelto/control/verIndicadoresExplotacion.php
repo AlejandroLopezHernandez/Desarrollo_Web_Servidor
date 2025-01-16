@@ -9,8 +9,6 @@ $dbname = 'FLOTA';
 $username = 'root';
 $password = '1234';
 
-
-
 // Crear una instancia del repositorio
 $repository = new RepositoryMySQL($host, $dbname, $username, $password);
 $vista= new VistaHTML();

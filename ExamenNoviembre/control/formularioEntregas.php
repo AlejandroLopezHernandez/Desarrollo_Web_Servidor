@@ -14,18 +14,16 @@ if(!isset($_SESSION['usuario_administrador'])){
 </head>
 <body>
     <h2>Consulta las entregas pendientes</h2>
-    <form action="verEntregaspendientes.php" method="post">
+    <form action="verEntregaspendientes.php" method="GET">
     <label>Conductor(ID): </label>
-    <input type="text" name="conductor_id" id="conductor_id">
-    <input type="hidden" name="action" value="1">
-    <br>
-    <input type="submit" value="Consultar Conductor" name="Consultar Vehiculo" required>
+    <!--Este código PHP incrustado sirve para que, en caso de existir una cookie,
+        se use el valor de esta en el input -->
+    <input type="text" name="conductor" id="conductor" value="<?php isset($_COOKIE['conductor'])?$_COOKIE['conductor']:'1';?>">
     <br><br>
     <label>Vehículo(ID):</label>
-    <input type="text" name="vehiculo_id" id="vehiculo_id">
-    <input type="hidden" name="action" value="2">
+    <input type="text" name="vehiculo" id="vehiculo" value="<?php isset($_COOKIE['vehiculo'])?$_COOKIE['vehiculo']:'1';?>">
     <br><br>
-    <input type="submit" value="Consultar Vehiculo" name="Consultar Conductor" required>
+    <input type="submit" value="Consultar" name="Consultar Conductor" required>
 </form>
 </body>
 </html>
